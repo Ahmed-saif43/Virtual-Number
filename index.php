@@ -10,7 +10,7 @@ foreach (['data', 'EMIL', 'EMILS', 'BUY', 'assignment', 'data/id', 'data/txt', '
 }
 $API_KEY= '8688321394:AAGl3gSZMj0_hnAkD01oIWxkKJfEYgb28o8';
 define('API_KEY',$API_KEY);
-echo file_get_contents("https://api.telegram.org/bot" . API_KEY . "/setwebhook?url=" . $_SERVER['SERVER_NAME'] . "" . $_SERVER['SCRIPT_NAME']);
+echo file_get_contents("https://api.telegram.org/bot" . API_KEY . "/setwebhook?url=https://" . $_SERVER['HTTP_HOST'] . $_SERVER['SCRIPT_NAME']);
 function bot($method,$datas=[]){
 $amrakl = http_build_query($datas);
 $url = "https://api.telegram.org/bot".API_KEY."/".$method."?$amrakl";
