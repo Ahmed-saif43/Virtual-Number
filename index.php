@@ -3,14 +3,11 @@
 // By @v_9_k_e
 
 ob_start();
-mkdir('data');
-mkdir('EMIL');
-mkdir('EMILS');
-mkdir('BUY');
-mkdir('assignment');
-mkdir('data/id');
-mkdir('data/txt');
-mkdir('data/api');
+foreach (['data', 'EMIL', 'EMILS', 'BUY', 'assignment', 'data/id', 'data/txt', 'data/api'] as $__dir) {
+	if (!is_dir($__dir)) {
+		mkdir($__dir, 0777, true);
+	}
+}
 $API_KEY= '8688321394:AAGl3gSZMj0_hnAkD01oIWxkKJfEYgb28o8';
 define('API_KEY',$API_KEY);
 echo file_get_contents("https://api.telegram.org/bot" . API_KEY . "/setwebhook?url=" . $_SERVER['SERVER_NAME'] . "" . $_SERVER['SCRIPT_NAME']);
