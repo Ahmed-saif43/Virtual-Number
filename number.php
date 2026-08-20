@@ -302,10 +302,10 @@ $name = $_co['country'][$country];
 $code = "$country$app$operator$add";
 $b++;
 if($b%2!=0){
-$key[inline_keyboard][$a][]=[text=>"$name ¦ ₽ $price",callback_data=>"Xi-$code"];
+$key['inline_keyboard'][$a][]=['text'=>"$name ¦ ₽ $price",'callback_data'=>"Xi-$code"];
 }else{
 $a++;//لنزول سطر
-$key[inline_keyboard][$a][]=[text=>"$name ¦ ₽ $price",callback_data=>"Xi-$code"];
+$key['inline_keyboard'][$a][]=['text'=>"$name ¦ ₽ $price",'callback_data'=>"Xi-$code"];
 }
 }
 }
@@ -364,10 +364,10 @@ $name = $_co['country'][$country];
 $code = "$country$app$operator$add";
 $b++;
 if($b%2!=0){
-$key[inline_keyboard][$a][]=[text=>"$name ¦ ₽ $price",callback_data=>"Xi-$code"];
+$key['inline_keyboard'][$a][]=['text'=>"$name ¦ ₽ $price",'callback_data'=>"Xi-$code"];
 }else{
 $a++;//لنزول سطر
-$key[inline_keyboard][$a][]=[text=>"$name ¦ ₽ $price",callback_data=>"Xi-$code"];
+$key['inline_keyboard'][$a][]=['text'=>"$name ¦ ₽ $price",'callback_data'=>"Xi-$code"];
 }
 }
 }
@@ -601,7 +601,7 @@ bot('answercallbackquery',[
 'text'=>"
 ⚠️ - عذرا هذا الرقم لم يعد متاحا
 ",
-'show_alert'=>felse,
+'show_alert'=>false,
 ]);
 unlink("data/id/$id/step.txt");
 }else{
@@ -646,7 +646,7 @@ bot('answercallbackquery',[
 'text'=>"
 ⚠️ - عذرا هذا الرقم لم يعد متاحا
 ",
-'show_alert'=>felse,
+'show_alert'=>false,
 ]);
 unlink("data/id/$id/step.txt");
 }else{
@@ -699,24 +699,24 @@ bot('sendMessage',[
 ]
 ])
 ]);
-$BUYSNUM[number][$ordermy][idSend] = $idSend;
-$BUYSNUM[number][$ordermy][name] = $name;
-$BUYSNUM[number][$ordermy][app] = "Whatsapp";
-$BUYSNUM[number][$ordermy][phone] = $number;
-$BUYSNUM[number][$ordermy][code] = $code;
-$BUYSNUM[number][$ordermy][status] = 2;
-$BUYSNUM[number][$ordermy][price] = $price;
-$BUYSNUM[number][$ordermy][id] = $idnums;
-$BUYSNUM[number][$ordermy][type] = "ready";
-$BUYSNUM[number][$ordermy]["chat-id"] = $id;
-$BUYSNUM[number][$ordermy][DAY] = $DAY;
-$BUYSNUM[ready_my] += 1;
+$BUYSNUM['number'][$ordermy]['idSend'] = $idSend;
+$BUYSNUM['number'][$ordermy]['name'] = $name;
+$BUYSNUM['number'][$ordermy]['app'] = "Whatsapp";
+$BUYSNUM['number'][$ordermy]['phone'] = $number;
+$BUYSNUM['number'][$ordermy]['code'] = $code;
+$BUYSNUM['number'][$ordermy]['status'] = 2;
+$BUYSNUM['number'][$ordermy]['price'] = $price;
+$BUYSNUM['number'][$ordermy]['id'] = $idnums;
+$BUYSNUM['number'][$ordermy]['type'] = "ready";
+$BUYSNUM['number'][$ordermy]["chat-id"] = $id;
+$BUYSNUM['number'][$ordermy]['DAY'] = $DAY;
+$BUYSNUM['ready_my'] += 1;
 NumbBuys($BUYSNUM,$EM);
-$ORDERALL[$idSend][account] = $EM;
-$ORDERALL[$idSend][order] = $ordermy;
-$ORDERALL[$idSend][status] = 2;
-$ORDERALL[ready] +=1;
-$ORDERALL[ruble] +=$price;
+$ORDERALL[$idSend]['account'] = $EM;
+$ORDERALL[$idSend]['order'] = $ordermy;
+$ORDERALL[$idSend]['status'] = 2;
+$ORDERALL['ready'] +=1;
+$ORDERALL['ruble'] +=$price;
 OrdAll($ORDERALL);
 $points = file_get_contents("EMILS/$EM/points.txt");
 $as = $points - $price;
@@ -804,18 +804,18 @@ if($ads <= 1){
 exit;
 }
 $ads=$ads-1;
-if(time() - $BUYSNUM[number][$Detector][times] <= 2){
+if(time() - $BUYSNUM['number'][$Detector]['times'] <= 2){
 unlink("data/id/$id/step.txt");
 exit;
 }
 for($i=1; $i<26;$i++){
 $rand=rand(0,$ads);
 $zero = $random[$add]['zero'][$rand];
-$price=$buy['number'][$zero][price];
-$country = $buy['number'][$zero][country];
-$operator = $buy['number'][$zero][operator];
-$app = $buy['number'][$zero][app];
-$site = $buy['number'][$zero][site];
+$price=$buy['number'][$zero]['price'];
+$country = $buy['number'][$zero]['country'];
+$operator = $buy['number'][$zero]['operator'];
+$app = $buy['number'][$zero]['app'];
+$site = $buy['number'][$zero]['site'];
 $status_zero = $buy['number'][$zero];
 $name = $_co['country'][$country];
 if($add >= 21 and $add <= 25){
@@ -844,13 +844,13 @@ if($addblusdel[$site]['add'] == "ok"){
 $api=json_decode(file_get_contents("https://".$_SERVER['SERVER_NAME']."/$bot/api-sites.php?action=getNum&site=$site&country=$country&app=$app&operator=$operator"),1);
 }
 if($site=="2ndline"){
-$num2nd = $api[num2nd];
+$num2nd = $api['num2nd'];
 }
-$status = $api[status];
-$number = $api[number];
-$idnumber = $api[idnumber];
-$time = $api[time];
-$Location = $api[Location];
+$status = $api['status'];
+$number = $api['number'];
+$idnumber = $api['idnumber'];
+$time = $api['time'];
+$Location = $api['Location'];
 #__________Time
 $z=$time/60;
 $ex1 = explode(".", $z);
@@ -903,11 +903,11 @@ if($num2nd == null){
 for($ii=0; $ii<10;$ii++){
 sleep(1);
 $api=json_decode(file_get_contents("https://".$_SERVER['SERVER_NAME']."/$bot/api-sites.php?action=getNum2nd&site=$site&country=$country&id=$idds"),1);
-$status = $api[status];
-$num2nd = $api[num2nd];
-$number = $api[number];
-$idnumber = $api[idnumber];
-$Location = $api[Location];
+$status = $api['status'];
+$num2nd = $api['num2nd'];
+$number = $api['number'];
+$idnumber = $api['idnumber'];
+$Location = $api['Location'];
 $see = str_replace(["0","1","2","3","4","5","6","7","8","9"],["••","•••","••••","••","•••","••••","••","•••","••••"],$ii);
 if($num2nd == null and $ii==10){
 bot('EditMessageText',[
@@ -993,28 +993,28 @@ bot('sendMessage',[
 ]);
 file_put_contents("data/id/$id/restriction.txt","$ordermy");
 $times=time();
-$BUYSNUM[number][$ordermy][idSend] = $idSend;
-$BUYSNUM[number][$ordermy][phone] = $number;
-$BUYSNUM[number][$ordermy][sms][0][code] = null;
-$BUYSNUM[number][$ordermy][status] = 1;
-$BUYSNUM[number][$ordermy][operator] = $operator;
-$BUYSNUM[number][$ordermy][app] = $app;
-$BUYSNUM[number][$ordermy][add] = $add;
-$BUYSNUM[number][$ordermy][price] = $price;
-$BUYSNUM[number][$ordermy][id] = $idnums;
-$BUYSNUM[number][$ordermy][site] = $site;
-$BUYSNUM[number][$ordermy][zero] = $zero;
-$BUYSNUM[number][$ordermy][country] = $country;
-$BUYSNUM[number][$ordermy][idnumber] = $idnumber;
-$BUYSNUM[number][$ordermy][type] = "direct";
-$BUYSNUM[number][$ordermy][finish] = $time;
-$BUYSNUM[number][$ordermy][times] = $times;
-$BUYSNUM[number][$ordermy]["chat-id"] = $id;
-$BUYSNUM[number][$ordermy][DAY] = $DAY;
+$BUYSNUM['number'][$ordermy]['idSend'] = $idSend;
+$BUYSNUM['number'][$ordermy]['phone'] = $number;
+$BUYSNUM['number'][$ordermy]['sms'][0]['code'] = null;
+$BUYSNUM['number'][$ordermy]['status'] = 1;
+$BUYSNUM['number'][$ordermy]['operator'] = $operator;
+$BUYSNUM['number'][$ordermy]['app'] = $app;
+$BUYSNUM['number'][$ordermy]['add'] = $add;
+$BUYSNUM['number'][$ordermy]['price'] = $price;
+$BUYSNUM['number'][$ordermy]['id'] = $idnums;
+$BUYSNUM['number'][$ordermy]['site'] = $site;
+$BUYSNUM['number'][$ordermy]['zero'] = $zero;
+$BUYSNUM['number'][$ordermy]['country'] = $country;
+$BUYSNUM['number'][$ordermy]['idnumber'] = $idnumber;
+$BUYSNUM['number'][$ordermy]['type'] = "direct";
+$BUYSNUM['number'][$ordermy]['finish'] = $time;
+$BUYSNUM['number'][$ordermy]['times'] = $times;
+$BUYSNUM['number'][$ordermy]["chat-id"] = $id;
+$BUYSNUM['number'][$ordermy]['DAY'] = $DAY;
 file_put_contents("EMILS/$EM/number.json", json_encode($BUYSNUM,64|128|256));
-$ORDERALL[$idSend][account] = $EM;
-$ORDERALL[$idSend][order] = $ordermy;
-$ORDERALL[$idSend][status] = 1;
+$ORDERALL[$idSend]['account'] = $EM;
+$ORDERALL[$idSend]['order'] = $ordermy;
+$ORDERALL[$idSend]['status'] = 1;
 file_put_contents('BUY/Orderall.json', json_encode($ORDERALL,64|128|256));
 unlink("data/id/$id/step.txt");
 exit;
@@ -1075,28 +1075,28 @@ bot('sendMessage',[
 ]);
 file_put_contents("data/id/$id/restriction.txt","$ordermy");
 $times=time();
-$BUYSNUM[number][$ordermy][idSend] = $idSend;
-$BUYSNUM[number][$ordermy][phone] = $number;
-$BUYSNUM[number][$ordermy][sms][0][code] = null;
-$BUYSNUM[number][$ordermy][status] = 1;
-$BUYSNUM[number][$ordermy][operator] = $operator;
-$BUYSNUM[number][$ordermy][app] = $app;
-$BUYSNUM[number][$ordermy][add] = $add;
-$BUYSNUM[number][$ordermy][price] = $price;
-$BUYSNUM[number][$ordermy][id] = $idnums;
-$BUYSNUM[number][$ordermy][site] = $site;
-$BUYSNUM[number][$ordermy][zero] = $zero;
-$BUYSNUM[number][$ordermy][country] = $country;
-$BUYSNUM[number][$ordermy][idnumber] = $idnumber;
-$BUYSNUM[number][$ordermy][type] = "direct";
-$BUYSNUM[number][$ordermy][finish] = $time;
-$BUYSNUM[number][$ordermy][times] = $times;
-$BUYSNUM[number][$ordermy]["chat-id"] = $id;
-$BUYSNUM[number][$ordermy][DAY] = $DAY;
+$BUYSNUM['number'][$ordermy]['idSend'] = $idSend;
+$BUYSNUM['number'][$ordermy]['phone'] = $number;
+$BUYSNUM['number'][$ordermy]['sms'][0]['code'] = null;
+$BUYSNUM['number'][$ordermy]['status'] = 1;
+$BUYSNUM['number'][$ordermy]['operator'] = $operator;
+$BUYSNUM['number'][$ordermy]['app'] = $app;
+$BUYSNUM['number'][$ordermy]['add'] = $add;
+$BUYSNUM['number'][$ordermy]['price'] = $price;
+$BUYSNUM['number'][$ordermy]['id'] = $idnums;
+$BUYSNUM['number'][$ordermy]['site'] = $site;
+$BUYSNUM['number'][$ordermy]['zero'] = $zero;
+$BUYSNUM['number'][$ordermy]['country'] = $country;
+$BUYSNUM['number'][$ordermy]['idnumber'] = $idnumber;
+$BUYSNUM['number'][$ordermy]['type'] = "direct";
+$BUYSNUM['number'][$ordermy]['finish'] = $time;
+$BUYSNUM['number'][$ordermy]['times'] = $times;
+$BUYSNUM['number'][$ordermy]["chat-id"] = $id;
+$BUYSNUM['number'][$ordermy]['DAY'] = $DAY;
 file_put_contents("EMILS/$EM/number.json", json_encode($BUYSNUM,64|128|256));
-$ORDERALL[$idSend][account] = $EM;
-$ORDERALL[$idSend][order] = $ordermy;
-$ORDERALL[$idSend][status] = 1;
+$ORDERALL[$idSend]['account'] = $EM;
+$ORDERALL[$idSend]['order'] = $ordermy;
+$ORDERALL[$idSend]['status'] = 1;
 file_put_contents('BUY/Orderall.json', json_encode($ORDERALL,64|128|256));
 unlink("data/id/$id/step.txt");
 exit;
@@ -1109,13 +1109,13 @@ if($exdata[0] == "Ii"){
 $zero = $exdata[1];
 $order = $exdata[2];
 $zero = md5($zero);
-$numbers=$BUYSNUM[number][$order][phone];
-$price=$buy['number'][$zero][price];
-$country = $buy['number'][$zero][country];
-$add = $buy['number'][$zero][add];
-$operator = $buy['number'][$zero][operator];
-$app = $buy['number'][$zero][app];
-$site = $buy['number'][$zero][site];
+$numbers=$BUYSNUM['number'][$order]['phone'];
+$price=$buy['number'][$zero]['price'];
+$country = $buy['number'][$zero]['country'];
+$add = $buy['number'][$zero]['add'];
+$operator = $buy['number'][$zero]['operator'];
+$app = $buy['number'][$zero]['app'];
+$site = $buy['number'][$zero]['site'];
 $status_zero = $buy['number'][$zero];
 $name = $_co['country'][$country];
 $idSend=$orderall;
@@ -1141,7 +1141,7 @@ $wa = "☑️ - رؤية حالة الرقم في واتسأب. ↖️";
 }elseif($app == "tg"){
 $tg = "☑️ - رؤية حالة الرقم في تيليجرام. ↖️";
 }
-if(time() - $BUYSNUM[number][$Detector][times] <= 2){
+if(time() - $BUYSNUM['number'][$Detector]['times'] <= 2){
 unlink("data/id/$id/step.txt");
 exit;
 }
@@ -1151,13 +1151,13 @@ $api=json_decode(file_get_contents("https://".$_SERVER['SERVER_NAME']."/$bot/api
 $api=json_decode(file_get_contents("https://".$_SERVER['SERVER_NAME']."/$bot/api-sites.php?action=getNum5sim&site=$site&country=$country&app=$app&number=$numbers"),1);
 }
 if($site=="2ndline"){
-$num2nd = $api[num2nd];
+$num2nd = $api['num2nd'];
 }
-$status = $api[status];
-$number = $api[number];
-$idnumber = $api[idnumber];
-$time = $api[time];
-$Location = $api[Location];
+$status = $api['status'];
+$number = $api['number'];
+$idnumber = $api['idnumber'];
+$time = $api['time'];
+$Location = $api['Location'];
 #__________Time
 $z=$time/60;
 $ex1 = explode(".", $z);
@@ -1205,11 +1205,11 @@ if($num2nd == null){
 for($ii=0; $ii<10;$ii++){
 sleep(1);
 $api=json_decode(file_get_contents("https://".$_SERVER['SERVER_NAME']."/$bot/api-sites.php?action=getNum2nd&site=$site&country=$country&id=$idds"),1);
-$status = $api[status];
-$num2nd = $api[num2nd];
-$number = $api[number];
-$idnumber = $api[idnumber];
-$Location = $api[Location];
+$status = $api['status'];
+$num2nd = $api['num2nd'];
+$number = $api['number'];
+$idnumber = $api['idnumber'];
+$Location = $api['Location'];
 $see = str_replace(["0","1","2","3","4","5","6","7","8","9"],["••","•••","••••","••","•••","••••","••","•••","••••"],$ii);
 if($num2nd == null and $ii==10){
 bot('EditMessageText',[
@@ -1296,28 +1296,28 @@ bot('sendMessage',[
 ]);
 file_put_contents("data/id/$id/restriction.txt","$ordermy");
 $times=time();
-$BUYSNUM[number][$ordermy][idSend] = $idSend;
-$BUYSNUM[number][$ordermy][phone] = $number;
-$BUYSNUM[number][$ordermy][sms][0][code] = null;
-$BUYSNUM[number][$ordermy][status] = 1;
-$BUYSNUM[number][$ordermy][operator] = $operator;
-$BUYSNUM[number][$ordermy][app] = $app;
-$BUYSNUM[number][$ordermy][add] = $add;
-$BUYSNUM[number][$ordermy][price] = $price;
-$BUYSNUM[number][$ordermy][id] = $idnums;
-$BUYSNUM[number][$ordermy][site] = $site;
-$BUYSNUM[number][$ordermy][zero] = $zero;
-$BUYSNUM[number][$ordermy][country] = $country;
-$BUYSNUM[number][$ordermy][idnumber] = $idnumber;
-$BUYSNUM[number][$ordermy][type] = "direct";
-$BUYSNUM[number][$ordermy][finish] = $time;
-$BUYSNUM[number][$ordermy][times] = $times;
-$BUYSNUM[number][$ordermy]["chat-id"] = $id;
-$BUYSNUM[number][$ordermy][DAY] = $DAY;
+$BUYSNUM['number'][$ordermy]['idSend'] = $idSend;
+$BUYSNUM['number'][$ordermy]['phone'] = $number;
+$BUYSNUM['number'][$ordermy]['sms'][0]['code'] = null;
+$BUYSNUM['number'][$ordermy]['status'] = 1;
+$BUYSNUM['number'][$ordermy]['operator'] = $operator;
+$BUYSNUM['number'][$ordermy]['app'] = $app;
+$BUYSNUM['number'][$ordermy]['add'] = $add;
+$BUYSNUM['number'][$ordermy]['price'] = $price;
+$BUYSNUM['number'][$ordermy]['id'] = $idnums;
+$BUYSNUM['number'][$ordermy]['site'] = $site;
+$BUYSNUM['number'][$ordermy]['zero'] = $zero;
+$BUYSNUM['number'][$ordermy]['country'] = $country;
+$BUYSNUM['number'][$ordermy]['idnumber'] = $idnumber;
+$BUYSNUM['number'][$ordermy]['type'] = "direct";
+$BUYSNUM['number'][$ordermy]['finish'] = $time;
+$BUYSNUM['number'][$ordermy]['times'] = $times;
+$BUYSNUM['number'][$ordermy]["chat-id"] = $id;
+$BUYSNUM['number'][$ordermy]['DAY'] = $DAY;
 file_put_contents("EMILS/$EM/number.json", json_encode($BUYSNUM,64|128|256));
-$ORDERALL[$idSend][account] = $EM;
-$ORDERALL[$idSend][order] = $ordermy;
-$ORDERALL[$idSend][status] = 1;
+$ORDERALL[$idSend]['account'] = $EM;
+$ORDERALL[$idSend]['order'] = $ordermy;
+$ORDERALL[$idSend]['status'] = 1;
 file_put_contents('BUY/Orderall.json', json_encode($ORDERALL,64|128|256));
 unlink("data/id/$id/step.txt");
 exit;
@@ -1379,28 +1379,28 @@ bot('sendMessage',[
 ]);
 file_put_contents("data/id/$id/restriction.txt","$ordermy");
 $times=time();
-$BUYSNUM[number][$ordermy][idSend] = $idSend;
-$BUYSNUM[number][$ordermy][phone] = $number;
-$BUYSNUM[number][$ordermy][sms][0][code] = null;
-$BUYSNUM[number][$ordermy][status] = 1;
-$BUYSNUM[number][$ordermy][operator] = $operator;
-$BUYSNUM[number][$ordermy][app] = $app;
-$BUYSNUM[number][$ordermy][add] = $add;
-$BUYSNUM[number][$ordermy][price] = $price;
-$BUYSNUM[number][$ordermy][id] = $idnums;
-$BUYSNUM[number][$ordermy][site] = $site;
-$BUYSNUM[number][$ordermy][zero] = $zero;
-$BUYSNUM[number][$ordermy][country] = $country;
-$BUYSNUM[number][$ordermy][idnumber] = $idnumber;
-$BUYSNUM[number][$ordermy][type] = "direct";
-$BUYSNUM[number][$ordermy][finish] = $time;
-$BUYSNUM[number][$ordermy][times] = $times;
-$BUYSNUM[number][$ordermy]["chat-id"] = $id;
-$BUYSNUM[number][$ordermy][DAY] = $DAY;
+$BUYSNUM['number'][$ordermy]['idSend'] = $idSend;
+$BUYSNUM['number'][$ordermy]['phone'] = $number;
+$BUYSNUM['number'][$ordermy]['sms'][0]['code'] = null;
+$BUYSNUM['number'][$ordermy]['status'] = 1;
+$BUYSNUM['number'][$ordermy]['operator'] = $operator;
+$BUYSNUM['number'][$ordermy]['app'] = $app;
+$BUYSNUM['number'][$ordermy]['add'] = $add;
+$BUYSNUM['number'][$ordermy]['price'] = $price;
+$BUYSNUM['number'][$ordermy]['id'] = $idnums;
+$BUYSNUM['number'][$ordermy]['site'] = $site;
+$BUYSNUM['number'][$ordermy]['zero'] = $zero;
+$BUYSNUM['number'][$ordermy]['country'] = $country;
+$BUYSNUM['number'][$ordermy]['idnumber'] = $idnumber;
+$BUYSNUM['number'][$ordermy]['type'] = "direct";
+$BUYSNUM['number'][$ordermy]['finish'] = $time;
+$BUYSNUM['number'][$ordermy]['times'] = $times;
+$BUYSNUM['number'][$ordermy]["chat-id"] = $id;
+$BUYSNUM['number'][$ordermy]['DAY'] = $DAY;
 file_put_contents("EMILS/$EM/number.json", json_encode($BUYSNUM,64|128|256));
-$ORDERALL[$idSend][account] = $EM;
-$ORDERALL[$idSend][order] = $ordermy;
-$ORDERALL[$idSend][status] = 1;
+$ORDERALL[$idSend]['account'] = $EM;
+$ORDERALL[$idSend]['order'] = $ordermy;
+$ORDERALL[$idSend]['status'] = 1;
 file_put_contents('BUY/Orderall.json', json_encode($ORDERALL,64|128|256));
 unlink("data/id/$id/step.txt");
 exit;
@@ -1411,12 +1411,12 @@ exit;
 if($exdata[0] == "Xi"){
 $zero = $exdata[1];
 $zero = md5($zero);
-$price=$buy['number'][$zero][price];
-$country = $buy['number'][$zero][country];
-$add = $buy['number'][$zero][add];
-$operator = $buy['number'][$zero][operator];
-$app = $buy['number'][$zero][app];
-$site = $buy['number'][$zero][site];
+$price=$buy['number'][$zero]['price'];
+$country = $buy['number'][$zero]['country'];
+$add = $buy['number'][$zero]['add'];
+$operator = $buy['number'][$zero]['operator'];
+$app = $buy['number'][$zero]['app'];
+$site = $buy['number'][$zero]['site'];
 $status_zero = $buy['number'][$zero];
 $name = $_co['country'][$country];
 $idSend=$orderall;
@@ -1442,7 +1442,7 @@ $wa = "☑️ - رؤية حالة الرقم في واتسأب. ↖️";
 }elseif($app == "tg"){
 $tg = "☑️ - رؤية حالة الرقم في تيليجرام. ↖️";
 }
-if(time() - $BUYSNUM[number][$Detector][times] <= 2){
+if(time() - $BUYSNUM['number'][$Detector]['times'] <= 2){
 unlink("data/id/$id/step.txt");
 exit;
 }
@@ -1451,17 +1451,17 @@ unlink("data/id/$id/step.txt");
 }elseif($status != "200"){
 for($i=1; $i<21;$i++){
 $api=json_decode(file_get_contents("https://".$_SERVER['SERVER_NAME']."/$bot/api-sites.php?action=getNum&site=$site&country=$country&app=$app&operator=$operator"),1);
-$status = $api[status];
+$status = $api['status'];
 if($site=="2ndline"){
-$num2nd = $api[num2nd];
+$num2nd = $api['num2nd'];
 }
 if($site=="nagm" and $status == "200"){
-$site = $api[site];
+$site = $api['site'];
 }
-$number = $api[number];
-$idnumber = $api[idnumber];
-$time = $api[time];
-$Location = $api[Location];
+$number = $api['number'];
+$idnumber = $api['idnumber'];
+$time = $api['time'];
+$Location = $api['Location'];
 #__________Time
 $z=$time/60;
 $ex1 = explode(".", $z);
@@ -1520,11 +1520,11 @@ if($num2nd == null){
 for($ii=0; $ii<10;$ii++){
 sleep(1);
 $api=json_decode(file_get_contents("https://".$_SERVER['SERVER_NAME']."/$bot/api-sites.php?action=getNum2nd&site=$site&country=$country&id=$idds"),1);
-$status = $api[status];
-$num2nd = $api[num2nd];
-$number = $api[number];
-$idnumber = $api[idnumber];
-$Location = $api[Location];
+$status = $api['status'];
+$num2nd = $api['num2nd'];
+$number = $api['number'];
+$idnumber = $api['idnumber'];
+$Location = $api['Location'];
 $see = str_replace(["0","1","2","3","4","5","6","7","8","9"],["..","...","....",".....","..","...","....",".....","..","..."],$ii);
 if($num2nd == null and $ii==10){
 bot('EditMessageText',[
@@ -1623,28 +1623,28 @@ bot('sendMessage',[
 ]);
 file_put_contents("data/id/$id/restriction.txt","$ordermy");
 $times=time();
-$BUYSNUM[number][$ordermy][idSend] = $idSend;
-$BUYSNUM[number][$ordermy][phone] = $number;
-$BUYSNUM[number][$ordermy][sms][0][code] = null;
-$BUYSNUM[number][$ordermy][status] = 1;
-$BUYSNUM[number][$ordermy][operator] = $operator;
-$BUYSNUM[number][$ordermy][app] = $app;
-$BUYSNUM[number][$ordermy][add] = $add;
-$BUYSNUM[number][$ordermy][price] = $price;
-$BUYSNUM[number][$ordermy][id] = $idnums;
-$BUYSNUM[number][$ordermy][site] = $site;
-$BUYSNUM[number][$ordermy][zero] = $zero;
-$BUYSNUM[number][$ordermy][country] = $country;
-$BUYSNUM[number][$ordermy][idnumber] = $idnumber;
-$BUYSNUM[number][$ordermy][type] = "direct";
-$BUYSNUM[number][$ordermy][finish] = $time;
-$BUYSNUM[number][$ordermy][times] = $times;
-$BUYSNUM[number][$ordermy]["chat-id"] = $id;
-$BUYSNUM[number][$ordermy][DAY] = $DAY;
+$BUYSNUM['number'][$ordermy]['idSend'] = $idSend;
+$BUYSNUM['number'][$ordermy]['phone'] = $number;
+$BUYSNUM['number'][$ordermy]['sms'][0]['code'] = null;
+$BUYSNUM['number'][$ordermy]['status'] = 1;
+$BUYSNUM['number'][$ordermy]['operator'] = $operator;
+$BUYSNUM['number'][$ordermy]['app'] = $app;
+$BUYSNUM['number'][$ordermy]['add'] = $add;
+$BUYSNUM['number'][$ordermy]['price'] = $price;
+$BUYSNUM['number'][$ordermy]['id'] = $idnums;
+$BUYSNUM['number'][$ordermy]['site'] = $site;
+$BUYSNUM['number'][$ordermy]['zero'] = $zero;
+$BUYSNUM['number'][$ordermy]['country'] = $country;
+$BUYSNUM['number'][$ordermy]['idnumber'] = $idnumber;
+$BUYSNUM['number'][$ordermy]['type'] = "direct";
+$BUYSNUM['number'][$ordermy]['finish'] = $time;
+$BUYSNUM['number'][$ordermy]['times'] = $times;
+$BUYSNUM['number'][$ordermy]["chat-id"] = $id;
+$BUYSNUM['number'][$ordermy]['DAY'] = $DAY;
 file_put_contents("EMILS/$EM/number.json", json_encode($BUYSNUM,64|128|256));
-$ORDERALL[$idSend][account] = $EM;
-$ORDERALL[$idSend][order] = $ordermy;
-$ORDERALL[$idSend][status] = 1;
+$ORDERALL[$idSend]['account'] = $EM;
+$ORDERALL[$idSend]['order'] = $ordermy;
+$ORDERALL[$idSend]['status'] = 1;
 file_put_contents('BUY/Orderall.json', json_encode($ORDERALL,64|128|256));
 unlink("data/id/$id/step.txt");
 exit;
@@ -1716,28 +1716,28 @@ bot('sendMessage',[
 ]);
 file_put_contents("data/id/$id/restriction.txt","$ordermy");
 $times=time();
-$BUYSNUM[number][$ordermy][idSend] = $idSend;
-$BUYSNUM[number][$ordermy][phone] = $number;
-$BUYSNUM[number][$ordermy][sms][0][code] = null;
-$BUYSNUM[number][$ordermy][status] = 1;
-$BUYSNUM[number][$ordermy][operator] = $operator;
-$BUYSNUM[number][$ordermy][app] = $app;
-$BUYSNUM[number][$ordermy][add] = $add;
-$BUYSNUM[number][$ordermy][price] = $price;
-$BUYSNUM[number][$ordermy][id] = $idnums;
-$BUYSNUM[number][$ordermy][site] = $site;
-$BUYSNUM[number][$ordermy][zero] = $zero;
-$BUYSNUM[number][$ordermy][country] = $country;
-$BUYSNUM[number][$ordermy][idnumber] = $idnumber;
-$BUYSNUM[number][$ordermy][type] = "direct";
-$BUYSNUM[number][$ordermy][finish] = $time;
-$BUYSNUM[number][$ordermy][times] = $times;
-$BUYSNUM[number][$ordermy]["chat-id"] = $id;
-$BUYSNUM[number][$ordermy][DAY] = $DAY;
+$BUYSNUM['number'][$ordermy]['idSend'] = $idSend;
+$BUYSNUM['number'][$ordermy]['phone'] = $number;
+$BUYSNUM['number'][$ordermy]['sms'][0]['code'] = null;
+$BUYSNUM['number'][$ordermy]['status'] = 1;
+$BUYSNUM['number'][$ordermy]['operator'] = $operator;
+$BUYSNUM['number'][$ordermy]['app'] = $app;
+$BUYSNUM['number'][$ordermy]['add'] = $add;
+$BUYSNUM['number'][$ordermy]['price'] = $price;
+$BUYSNUM['number'][$ordermy]['id'] = $idnums;
+$BUYSNUM['number'][$ordermy]['site'] = $site;
+$BUYSNUM['number'][$ordermy]['zero'] = $zero;
+$BUYSNUM['number'][$ordermy]['country'] = $country;
+$BUYSNUM['number'][$ordermy]['idnumber'] = $idnumber;
+$BUYSNUM['number'][$ordermy]['type'] = "direct";
+$BUYSNUM['number'][$ordermy]['finish'] = $time;
+$BUYSNUM['number'][$ordermy]['times'] = $times;
+$BUYSNUM['number'][$ordermy]["chat-id"] = $id;
+$BUYSNUM['number'][$ordermy]['DAY'] = $DAY;
 file_put_contents("EMILS/$EM/number.json", json_encode($BUYSNUM,64|128|256));
-$ORDERALL[$idSend][account] = $EM;
-$ORDERALL[$idSend][order] = $ordermy;
-$ORDERALL[$idSend][status] = 1;
+$ORDERALL[$idSend]['account'] = $EM;
+$ORDERALL[$idSend]['order'] = $ordermy;
+$ORDERALL[$idSend]['status'] = 1;
 file_put_contents('BUY/Orderall.json', json_encode($ORDERALL,64|128|256));
 unlink("data/id/$id/step.txt");
 exit;
@@ -1809,28 +1809,28 @@ bot('sendMessage',[
 ]);
 file_put_contents("data/id/$id/restriction.txt","$ordermy");
 $times=time();
-$BUYSNUM[number][$ordermy][idSend] = $idSend;
-$BUYSNUM[number][$ordermy][phone] = $number;
-$BUYSNUM[number][$ordermy][sms][0][code] = null;
-$BUYSNUM[number][$ordermy][status] = 1;
-$BUYSNUM[number][$ordermy][operator] = $operator;
-$BUYSNUM[number][$ordermy][app] = $app;
-$BUYSNUM[number][$ordermy][add] = $add;
-$BUYSNUM[number][$ordermy][price] = $price;
-$BUYSNUM[number][$ordermy][id] = $idnums;
-$BUYSNUM[number][$ordermy][site] = $site;
-$BUYSNUM[number][$ordermy][zero] = $zero;
-$BUYSNUM[number][$ordermy][country] = $country;
-$BUYSNUM[number][$ordermy][idnumber] = $idnumber;
-$BUYSNUM[number][$ordermy][type] = "direct";
-$BUYSNUM[number][$ordermy][finish] = $time;
-$BUYSNUM[number][$ordermy][times] = $times;
-$BUYSNUM[number][$ordermy]["chat-id"] = $id;
-$BUYSNUM[number][$ordermy][DAY] = $DAY;
+$BUYSNUM['number'][$ordermy]['idSend'] = $idSend;
+$BUYSNUM['number'][$ordermy]['phone'] = $number;
+$BUYSNUM['number'][$ordermy]['sms'][0]['code'] = null;
+$BUYSNUM['number'][$ordermy]['status'] = 1;
+$BUYSNUM['number'][$ordermy]['operator'] = $operator;
+$BUYSNUM['number'][$ordermy]['app'] = $app;
+$BUYSNUM['number'][$ordermy]['add'] = $add;
+$BUYSNUM['number'][$ordermy]['price'] = $price;
+$BUYSNUM['number'][$ordermy]['id'] = $idnums;
+$BUYSNUM['number'][$ordermy]['site'] = $site;
+$BUYSNUM['number'][$ordermy]['zero'] = $zero;
+$BUYSNUM['number'][$ordermy]['country'] = $country;
+$BUYSNUM['number'][$ordermy]['idnumber'] = $idnumber;
+$BUYSNUM['number'][$ordermy]['type'] = "direct";
+$BUYSNUM['number'][$ordermy]['finish'] = $time;
+$BUYSNUM['number'][$ordermy]['times'] = $times;
+$BUYSNUM['number'][$ordermy]["chat-id"] = $id;
+$BUYSNUM['number'][$ordermy]['DAY'] = $DAY;
 file_put_contents("EMILS/$EM/number.json", json_encode($BUYSNUM,64|128|256));
-$ORDERALL[$idSend][account] = $EM;
-$ORDERALL[$idSend][order] = $ordermy;
-$ORDERALL[$idSend][status] = 1;
+$ORDERALL[$idSend]['account'] = $EM;
+$ORDERALL[$idSend]['order'] = $ordermy;
+$ORDERALL[$idSend]['status'] = 1;
 file_put_contents('BUY/Orderall.json', json_encode($ORDERALL,64|128|256));
 unlink("data/id/$id/step.txt");
 }
@@ -1838,21 +1838,21 @@ unlink("data/id/$id/step.txt");
 #=========={Code & AgeCod & ending & Ban}==========#
 if($exdata[0] == "Code" or $exdata[0] == "AgeCod" or $exdata[0] == "ending" or $exdata[0] == "Ban"){
 $idSend=$exdata[1];
-$order=$ORDERALL[$idSend][order];
-$account=$ORDERALL[$idSend][account];
-$number = $BUYSNUM[number][$order][phone];
-$status = $BUYSNUM[number][$order][status];
-$operator = $BUYSNUM[number][$order][operator];
-$app = $BUYSNUM[number][$order][app];
-$add = $BUYSNUM[number][$order][add];
-$price = $BUYSNUM[number][$order][price];
-$idnum = $BUYSNUM[number][$order][id];
-$site = $BUYSNUM[number][$order][site];
-$zero = $BUYSNUM[number][$order][zero];
-$country = $BUYSNUM[number][$order][country];
-$idnumber = $BUYSNUM[number][$order][idnumber];
-$finish = $BUYSNUM[number][$order][finish];
-$times = $BUYSNUM[number][$order][times];
+$order=$ORDERALL[$idSend]['order'];
+$account=$ORDERALL[$idSend]['account'];
+$number = $BUYSNUM['number'][$order]['phone'];
+$status = $BUYSNUM['number'][$order]['status'];
+$operator = $BUYSNUM['number'][$order]['operator'];
+$app = $BUYSNUM['number'][$order]['app'];
+$add = $BUYSNUM['number'][$order]['add'];
+$price = $BUYSNUM['number'][$order]['price'];
+$idnum = $BUYSNUM['number'][$order]['id'];
+$site = $BUYSNUM['number'][$order]['site'];
+$zero = $BUYSNUM['number'][$order]['zero'];
+$country = $BUYSNUM['number'][$order]['country'];
+$idnumber = $BUYSNUM['number'][$order]['idnumber'];
+$finish = $BUYSNUM['number'][$order]['finish'];
+$times = $BUYSNUM['number'][$order]['times'];
 $status_zero = $buy['number'][$zero];
 $name = $_co['country'][$country];
 if($add >= 21 and $add <= 25){
@@ -1903,7 +1903,7 @@ bot('EditMessageText',[
 ]);
 unlink("data/id/$id/step.txt");
 exit;
-}elseif($BUYSNUM[number][$order] == null){
+}elseif($BUYSNUM['number'][$order] == null){
 bot('EditMessageText',[
 'chat_id'=>$chat_id,
 'message_id'=>$message_id,
@@ -2019,21 +2019,21 @@ exit;
 #=========={Code Site All}==========#
 if($exdata[0] == "Code"){
 $idSend=$exdata[1];
-$order=$ORDERALL[$idSend][order];
-$account=$ORDERALL[$idSend][account];
-$number = $BUYSNUM[number][$order][phone];
-$status = $BUYSNUM[number][$order][status];
-$operator = $BUYSNUM[number][$order][operator];
-$app = $BUYSNUM[number][$order][app];
-$add = $BUYSNUM[number][$order][add];
-$price = $BUYSNUM[number][$order][price];
-$idnum = $BUYSNUM[number][$order][id];
-$site = $BUYSNUM[number][$order][site];
-$zero = $BUYSNUM[number][$order][zero];
-$country = $BUYSNUM[number][$order][country];
-$idnumber = $BUYSNUM[number][$order][idnumber];
-$finish = $BUYSNUM[number][$order][finish];
-$times = $BUYSNUM[number][$order][times];
+$order=$ORDERALL[$idSend]['order'];
+$account=$ORDERALL[$idSend]['account'];
+$number = $BUYSNUM['number'][$order]['phone'];
+$status = $BUYSNUM['number'][$order]['status'];
+$operator = $BUYSNUM['number'][$order]['operator'];
+$app = $BUYSNUM['number'][$order]['app'];
+$add = $BUYSNUM['number'][$order]['add'];
+$price = $BUYSNUM['number'][$order]['price'];
+$idnum = $BUYSNUM['number'][$order]['id'];
+$site = $BUYSNUM['number'][$order]['site'];
+$zero = $BUYSNUM['number'][$order]['zero'];
+$country = $BUYSNUM['number'][$order]['country'];
+$idnumber = $BUYSNUM['number'][$order]['idnumber'];
+$finish = $BUYSNUM['number'][$order]['finish'];
+$times = $BUYSNUM['number'][$order]['times'];
 $status_zero = $buy['number'][$zero];
 $name = $_co['country'][$country];
 $BALANCE = $Balance - $price;
@@ -2085,10 +2085,10 @@ $k="دقيقة";
 }
 #__________Time
 $api=json_decode(file_get_contents("https://".$_SERVER['SERVER_NAME']."/$bot/api-sites.php?action=getStatus&site=$site&idnumber=$idnumber&number=$number&app=$app&add=0"),1);
-$status = $api[status];
-$code = $api[code];
-$agen = $api[agen];
-$Location = $api[Location];
+$status = $api['status'];
+$code = $api['code'];
+$agen = $api['agen'];
+$Location = $api['Location'];
 if($agen == "200"){
 $agen = "- طلب الكود مرة أخرى🔂";
 }else{
@@ -2229,9 +2229,9 @@ bot('sendMessage',[
 ]
 ])
 ]);
-$BUYSNUM[number][$order][status] = -2;
+$BUYSNUM['number'][$order]['status'] = -2;
 file_put_contents("EMILS/$EM/number.json", json_encode($BUYSNUM,64|128|256));
-$ORDERALL[$idSend][status] = -2;
+$ORDERALL[$idSend]['status'] = -2;
 file_put_contents('BUY/Orderall.json', json_encode($ORDERALL,64|128|256));
 unlink("data/id/$id/step.txt");
 exit;
@@ -2328,13 +2328,13 @@ bot('sendMessage',[
 ]
 ])
 ]);
-$BUYSNUM[number][$order][sms][0][code] = "$code";
-$BUYSNUM[number][$order][status] = 2;
-$BUYSNUM[number_my] += 1;
+$BUYSNUM['number'][$order]['sms'][0]['code'] = "$code";
+$BUYSNUM['number'][$order]['status'] = 2;
+$BUYSNUM['number_my'] += 1;
 file_put_contents("EMILS/$EM/number.json", json_encode($BUYSNUM,64|128|256));
-$ORDERALL[$idSend][status] = 2;
-$ORDERALL[number] +=1;
-$ORDERALL[ruble] +=$price;
+$ORDERALL[$idSend]['status'] = 2;
+$ORDERALL['number'] +=1;
+$ORDERALL['ruble'] +=$price;
 file_put_contents('BUY/Orderall.json', json_encode($ORDERALL,64|128|256));
 $points = file_get_contents("EMILS/$EM/points.txt");
 $as = $points - $price;
@@ -2349,21 +2349,21 @@ $idSend = $exdata[1];
 $smsnum = $exdata[2];
 $allsms = $smsnum+1;
 $addnumber = str_replace(["1","2","3","4","5","6","7","8","9"],["1⃣","2⃣","3⃣","4⃣","5⃣","6⃣","7⃣","8⃣","9⃣"],$allsms);
-$order=$ORDERALL[$idSend][order];
-$account=$ORDERALL[$idSend][account];
-$number = $BUYSNUM[number][$order][phone];
-$status = $BUYSNUM[number][$order][status];
-$operator = $BUYSNUM[number][$order][operator];
-$app = $BUYSNUM[number][$order][app];
-$add = $BUYSNUM[number][$order][add];
-$price = $BUYSNUM[number][$order][price];
-$idnum = $BUYSNUM[number][$order][id];
-$site = $BUYSNUM[number][$order][site];
-$zero = $BUYSNUM[number][$order][zero];
-$country = $BUYSNUM[number][$order][country];
-$idnumber = $BUYSNUM[number][$order][idnumber];
-$finish = $BUYSNUM[number][$order][finish];
-$times = $BUYSNUM[number][$order][times];
+$order=$ORDERALL[$idSend]['order'];
+$account=$ORDERALL[$idSend]['account'];
+$number = $BUYSNUM['number'][$order]['phone'];
+$status = $BUYSNUM['number'][$order]['status'];
+$operator = $BUYSNUM['number'][$order]['operator'];
+$app = $BUYSNUM['number'][$order]['app'];
+$add = $BUYSNUM['number'][$order]['add'];
+$price = $BUYSNUM['number'][$order]['price'];
+$idnum = $BUYSNUM['number'][$order]['id'];
+$site = $BUYSNUM['number'][$order]['site'];
+$zero = $BUYSNUM['number'][$order]['zero'];
+$country = $BUYSNUM['number'][$order]['country'];
+$idnumber = $BUYSNUM['number'][$order]['idnumber'];
+$finish = $BUYSNUM['number'][$order]['finish'];
+$times = $BUYSNUM['number'][$order]['times'];
 $status_zero = $buy['number'][$zero];
 $name = $_co['country'][$country];
 if($add >= 21 and $add <= 25){
@@ -2390,10 +2390,10 @@ $BUYING="Wi-$add";
 $BUYING="Xi-$cod";
 }
 $api=json_decode(file_get_contents("https://".$_SERVER['SERVER_NAME']."/$bot/api-sites.php?action=getStatus2&site=$site&idnumber=$idnumber&smsnum=$smsnum&allsms=$allsms"),1);
-$status = $api[status];
-$code = $api[code];
-$agen = $api[agen];
-$Location = $api[Location];
+$status = $api['status'];
+$code = $api['code'];
+$agen = $api['agen'];
+$Location = $api['Location'];
 if($agen == "200"){
 $agen = "- طلب الكود مرة أخرى 🔂";
 }
@@ -2430,7 +2430,7 @@ bot('EditMessageText',[
 ]);
 unlink("data/id/$id/step.txt");
 exit;
-}elseif($BUYSNUM[number][$order][sms][$smsnum] != null and time() - $times >= $finish){
+}elseif($BUYSNUM['number'][$order]['sms'][$smsnum] != null and time() - $times >= $finish){
 bot('answercallbackquery',[
 'callback_query_id' => $update->callback_query->id,
 'text'=>"☑️ - تم إرسال الكود الجديد من قبل...",
@@ -2463,7 +2463,7 @@ bot('EditMessageText',[
 ]);
 unlink("data/id/$id/step.txt");
 exit;
-}elseif($BUYSNUM[number][$order][sms][$smsnum] != null and time() - $times < $finish){
+}elseif($BUYSNUM['number'][$order]['sms'][$smsnum] != null and time() - $times < $finish){
 bot('answercallbackquery',[
 'callback_query_id' => $update->callback_query->id,
 'text'=>"☑️ - تم إرسال الكود الجديد من قبل...",
@@ -2577,7 +2577,7 @@ bot('SendMessage',[
 ]
 ])
 ]);
-$BUYSNUM[number][$order][sms][$smsnum][code] = "$code";
+$BUYSNUM['number'][$order]['sms'][$smsnum]['code'] = "$code";
 file_put_contents("EMILS/$EM/number.json", json_encode($BUYSNUM,64|128|256));
 unlink("data/id/$id/step.txt");
 exit;
@@ -2662,7 +2662,7 @@ bot('SendMessage',[
 ]
 ])
 ]);
-$BUYSNUM[number][$order][sms][$smsnum][code] = "$code";
+$BUYSNUM['number'][$order]['sms'][$smsnum]['code'] = "$code";
 file_put_contents("EMILS/$EM/number.json", json_encode($BUYSNUM,64|128|256));
 unlink("data/id/$id/step.txt");
 exit;
@@ -2671,21 +2671,21 @@ exit;
 #=========={End Site All}==========#
 if($exdata[0] == "ending"){
 $idSend=$exdata[1];
-$order=$ORDERALL[$idSend][order];
-$account=$ORDERALL[$idSend][account];
-$number = $BUYSNUM[number][$order][phone];
-$status = $BUYSNUM[number][$order][status];
-$operator = $BUYSNUM[number][$order][operator];
-$app = $BUYSNUM[number][$order][app];
-$add = $BUYSNUM[number][$order][add];
-$price = $BUYSNUM[number][$order][price];
-$idnum = $BUYSNUM[number][$order][id];
-$site = $BUYSNUM[number][$order][site];
-$zero = $BUYSNUM[number][$order][zero];
-$country = $BUYSNUM[number][$order][country];
-$idnumber = $BUYSNUM[number][$order][idnumber];
-$finish = $BUYSNUM[number][$order][finish];
-$times = $BUYSNUM[number][$order][times];
+$order=$ORDERALL[$idSend]['order'];
+$account=$ORDERALL[$idSend]['account'];
+$number = $BUYSNUM['number'][$order]['phone'];
+$status = $BUYSNUM['number'][$order]['status'];
+$operator = $BUYSNUM['number'][$order]['operator'];
+$app = $BUYSNUM['number'][$order]['app'];
+$add = $BUYSNUM['number'][$order]['add'];
+$price = $BUYSNUM['number'][$order]['price'];
+$idnum = $BUYSNUM['number'][$order]['id'];
+$site = $BUYSNUM['number'][$order]['site'];
+$zero = $BUYSNUM['number'][$order]['zero'];
+$country = $BUYSNUM['number'][$order]['country'];
+$idnumber = $BUYSNUM['number'][$order]['idnumber'];
+$finish = $BUYSNUM['number'][$order]['finish'];
+$times = $BUYSNUM['number'][$order]['times'];
 $status_zero = $buy['number'][$zero];
 $name = $_co['country'][$country];
 if($add >= 21 and $add <= 25){
@@ -2712,8 +2712,8 @@ $BUYING="Wi-$add";
 $BUYING="Xi-$cod";
 }
 $api=json_decode(file_get_contents("https://".$_SERVER['SERVER_NAME']."/$bot/api-sites.php?action=setStatus&site=$site&country=$country&app=$app&idnumber=$idnumber&number=$number"),1);
-$status = $api[status];
-$Location = $api[Location];
+$status = $api['status'];
+$Location = $api['Location'];
 if(time() - $times >= $finish){
 bot('EditMessageText',[
 'chat_id'=>$chat_id,
@@ -2783,9 +2783,9 @@ bot('sendMessage',[
 ]
 ])
 ]);
-$BUYSNUM[number][$order][status] = 3;
+$BUYSNUM['number'][$order]['status'] = 3;
 file_put_contents("EMILS/$EM/number.json", json_encode($BUYSNUM,64|128|256));
-$ORDERALL[$idSend][status] = 3;
+$ORDERALL[$idSend]['status'] = 3;
 file_put_contents('BUY/Orderall.json', json_encode($ORDERALL,64|128|256));
 unlink("data/id/$id/step.txt");
 }
@@ -2793,21 +2793,21 @@ unlink("data/id/$id/step.txt");
 #=========={Ban Site All}==========#
 if($exdata[0] == "Ban"){
 $idSend=$exdata[1];
-$order=$ORDERALL[$idSend][order];
-$account=$ORDERALL[$idSend][account];
-$number = $BUYSNUM[number][$order][phone];
-$status = $BUYSNUM[number][$order][status];
-$operator = $BUYSNUM[number][$order][operator];
-$app = $BUYSNUM[number][$order][app];
-$add = $BUYSNUM[number][$order][add];
-$price = $BUYSNUM[number][$order][price];
-$idnum = $BUYSNUM[number][$order][id];
-$site = $BUYSNUM[number][$order][site];
-$zero = $BUYSNUM[number][$order][zero];
-$country = $BUYSNUM[number][$order][country];
-$idnumber = $BUYSNUM[number][$order][idnumber];
-$finish = $BUYSNUM[number][$order][finish];
-$times = $BUYSNUM[number][$order][times];
+$order=$ORDERALL[$idSend]['order'];
+$account=$ORDERALL[$idSend]['account'];
+$number = $BUYSNUM['number'][$order]['phone'];
+$status = $BUYSNUM['number'][$order]['status'];
+$operator = $BUYSNUM['number'][$order]['operator'];
+$app = $BUYSNUM['number'][$order]['app'];
+$add = $BUYSNUM['number'][$order]['add'];
+$price = $BUYSNUM['number'][$order]['price'];
+$idnum = $BUYSNUM['number'][$order]['id'];
+$site = $BUYSNUM['number'][$order]['site'];
+$zero = $BUYSNUM['number'][$order]['zero'];
+$country = $BUYSNUM['number'][$order]['country'];
+$idnumber = $BUYSNUM['number'][$order]['idnumber'];
+$finish = $BUYSNUM['number'][$order]['finish'];
+$times = $BUYSNUM['number'][$order]['times'];
 $status_zero = $buy['number'][$zero];
 $name = $_co['country'][$country];
 $BALANCE = $Balance - $price;
@@ -2835,13 +2835,13 @@ $BUYING="Wi-$add";
 $BUYING="Xi-$cod";
 }
 $api=json_decode(file_get_contents("https://".$_SERVER['SERVER_NAME']."/$bot/api-sites.php?action=getStatus&site=$site&app=$app&idnumber=$idnumber&number=$number"),1);
-$status = $api[status];
-$code = $api[code];
-$agen = $api[agen];
-$Location = $api[Location];
+$status = $api['status'];
+$code = $api['code'];
+$agen = $api['agen'];
+$Location = $api['Location'];
 $api2=json_decode(file_get_contents("https://".$_SERVER['SERVER_NAME']."/$bot/api-sites.php?action=addBlack&site=$site&app=$app&idnumber=$idnumber&number=$number"),1);
-$status2 = $api2[status];
-$Location2 = $api2[Location];
+$status2 = $api2['status'];
+$Location2 = $api2['Location'];
 if($agen == "200"){
 $agen = "- طلب الكود مرة أخرى🔂";
 }else{
@@ -2937,9 +2937,9 @@ bot('EditMessageText',[
 ]
 ])
 ]);
-$BUYSNUM[number][$order][status] = -1;
+$BUYSNUM['number'][$order]['status'] = -1;
 file_put_contents("EMILS/$EM/number.json", json_encode($BUYSNUM,64|128|256));
-$ORDERALL[$idSend][status] = -1;
+$ORDERALL[$idSend]['status'] = -1;
 file_put_contents('BUY/Orderall.json', json_encode($ORDERALL,64|128|256));
 unlink("data/id/$id/restriction.txt");
 unlink("data/id/$id/step.txt");
@@ -3037,13 +3037,13 @@ bot('sendMessage',[
 ]
 ])
 ]);
-$BUYSNUM[number][$order][sms][0][code] = "$code";
-$BUYSNUM[number][$order][status] = 2;
-$BUYSNUM[number_my] += 1;
+$BUYSNUM['number'][$order]['sms'][0]['code'] = "$code";
+$BUYSNUM['number'][$order]['status'] = 2;
+$BUYSNUM['number_my'] += 1;
 file_put_contents("EMILS/$EM/number.json", json_encode($BUYSNUM,64|128|256));
-$ORDERALL[$idSend][status] = 2;
-$ORDERALL[number] +=1;
-$ORDERALL[ruble] +=$price;
+$ORDERALL[$idSend]['status'] = 2;
+$ORDERALL['number'] +=1;
+$ORDERALL['ruble'] +=$price;
 file_put_contents('BUY/Orderall.json', json_encode($ORDERALL,64|128|256));
 $points = file_get_contents("EMILS/$EM/points.txt");
 $as = $points - $price;
@@ -3096,9 +3096,9 @@ bot('sendMessage',[
 ]
 ])
 ]);
-$BUYSNUM[number][$order][status] = -2;
+$BUYSNUM['number'][$order]['status'] = -2;
 file_put_contents("EMILS/$EM/number.json", json_encode($BUYSNUM,64|128|256));
-$ORDERALL[$idSend][status] = -2;
+$ORDERALL[$idSend]['status'] = -2;
 file_put_contents('BUY/Orderall.json', json_encode($ORDERALL,64|128|256));
 unlink("data/id/$id/step.txt");
 exit;
@@ -3146,9 +3146,9 @@ bot('sendMessage',[
 ]
 ])
 ]);
-$BUYSNUM[number][$order][status] = -1;
+$BUYSNUM['number'][$order]['status'] = -1;
 file_put_contents("EMILS/$EM/number.json", json_encode($BUYSNUM,64|128|256));
-$ORDERALL[$idSend][status] = -1;
+$ORDERALL[$idSend]['status'] = -1;
 file_put_contents('BUY/Orderall.json', json_encode($ORDERALL,64|128|256));
 unlink("data/id/$id/restriction.txt");
 unlink("data/id/$id/step.txt");
